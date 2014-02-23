@@ -4,4 +4,4 @@
 
 var server = require("./todoServer");
 
-server.start(8080);
+server.start(process.env.PORT || 8080);
