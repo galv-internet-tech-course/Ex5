@@ -1,0 +1,19 @@
+.login_section {
+    padding-bottom: 40px;
+}
+
+.login_header {
+    padding-top: 15px;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    color: #b3b3b3;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.login_button {
+    margin-top: 15px;
+    font-size: 200%;
+    color: red;
+}

@@ -1,0 +1,55 @@
+Todo API tests:
+
+For the implementation see function runTestsEx5() in tests.js.
+
+register:
+V    register a new user
+V    try to register an existing user
+V    register request with missing input params
+V    register request without body
+V    register another user
+
+login:
+V    successful login
+V    login with non-existing user
+V    login with a wrong password
+V    login requests with missing params
+V    login request without body
+V    login another user
+
+get items (with GET):
+V   get an empty items array
+V   get request with a bad cookie (wrong session ID)
+V   get request without cookie
+V   get request with an expired cookie (expired session ID)
+V   get an items array with two items that were added
+
+add items (with POST):
+V   add two items
+V   add request with a bad cookie (wrong session ID)
+V   add request without cookie
+V   add with a missing value param
+V   add with a missing id param
+V   add with an undefined value param
+V   add with a bad value param type
+V   add with a bad id param type
+V   add with id that is already in use
+
+update items (with PUT):
+V   update an item (both value and status)
+V   update with bad cookie (wrong session ID)
+V   update with non-existing id
+V   update with missing params
+V   update with an undefined value param
+V   update with a bad value param type
+V   update with a bad id param type
+V   update with a bad status param value
+V   update with a bad status param type
+
+delete items (with DELETE):
+V   delete an existing item
+V   delete with bad cookie (wrong session ID)
+V   delete with non-existing id
+V   delete all completed items
+V   delete without id param
+V   delete with a bad id param type

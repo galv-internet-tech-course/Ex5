@@ -1,0 +1,34 @@
+Features of Javascript that does not exist in Java:
+
+Javascript is a dynamic language:
+	Java is a static programming language: 
+		a type must be defined for each variable, 
+		"blueprints" (classes) must be defined for objects, 
+		inheritance is static (defined in the class).
+	Javascript, on the other hand, is dynamic: 
+		variables can change it's reference from primitive to object during runtime (and vise versa), 
+		variables that reference objects can change its objection structure, 
+		there are no "blueprints" that enforce the structure
+The dynamic features of Javascript are a major difference from Java. 
+	Its main advantages: 
+		It's possible to change variables types and structures during runtime, which adds much flexibility; 
+		It's easy and "fun" to program;
+		It's more "efficient" in terms of lines of code - the programmer writes less code;
+	However, it has drawbacks:
+		non continues memory allocation;
+		type-errors can not be found before runtime
+
+Javascript is a scripting language. 
+Java code needs to be compiled to bytecode before execution. 
+JavaScript code, on the other hand, is all in text and does not have to be compiled. It can also be used interactively with a Javascript interpreter (engine).
+Therefore many programmers find it easier and more "fun" to write code in Javascript.
+Of course, compilation has its own advantages: finding errors during compile time and not during runtime, optimizations and efficient memory management, etc.
+  
+Java is class-based, while JavaScript is prototype-based (there are no explicit classes and objects inherit directly from other objects which are their prototypes).
+JavaScript prototypes can be redefined at runtime, and have immediate effect for all referring objects. Java classes cannot be redefined in a way that affects any existing object instances.
+JavaScript also allows methods in an object to be redefined independently of its prototype.
+In Javascript one can very easily include one-of-a-kind objects with their own behavior (implement singleton pattern), while in Java creating singletones (class that is guaranteed to have only one instance) is less easy and elegant.
+In addition, in Javascript instances can become templates for other instances - e.g. if you want to "clone" an object (and then extend it) it is easy, just use the existing object as the prototype for the new object. No need to write cloning logic for different classes.
+
+Javascript is based on asynchronous, event-driven model. 
+Writing asynchronous, event-driven applications in Javascript using the event-loop mechanism is very easy, and very efficient for IO-based applications. 

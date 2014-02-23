@@ -1,0 +1,52 @@
+CSRF:
+-----
+
+My application can suffer from CSRF.
+For example, supposing that the user is logged in to my application, and on the same time opens on another tab a HTML
+page that contains the following:
+
+    <h1>Do you want to make 1,000,000$ in one hour without leaving home?</h1>
+    <h2>press this button:</h2>
+    <form action=http://<todo server host>:<todo server port>/item method=post enctype="text/plain">
+        <input name='{"id":"evil id", "value":"evil item", "ignore_me":"' value='string to ignore"}' type='hidden'>
+        <input type=submit>
+    </form>
+
+(I put a HTML page with this code in www/CSRF.html).
+
+Most users want to make 1,000,000$ in one hour and therefore they will click the button. When the button is pressed
+a POST request with the following body will be sent:
+{"id":"evil id", "value":"evil item", "ignore_me":"=string to ignore"}
+In addition, since the user is logged in to the todo application in the todo server host, the POST request will
+contain a cookie with the sessionID.
+Therefore, the todo server will receive a POST message with a valid sessionID and a valid JSON body (the server
+ignores the "ignore_me" key), and a new "evil item" item will be added to the todo list.
+Since the POST request is sent from a HTML form and not from JS code, the same origin policy doesn't bother the attacker.
+
+There are a few ways to prevent this attack. I will describe one such way:
+When the user is logging in to the todo server, the server will provide the client a secret string. The client will
+add this secret to every request it makes and the server will verify it on every request. Since this secret is passed
+with the request body and not by cookie, the attacker can't use it. If the attacker uses the HTML code that I wrote
+above, a post request will be sent to the server, but this request body won't contain the secret and therefore the
+server won't commit the item addition.
+
+
+XSS:
+----
+
+A good summary of XSS in AngularJS can be found here:
+https://code.google.com/p/mustache-security/wiki/AngularJS#Injection_Attacks
+https://code.google.com/p/mustache-security/wiki/AngularJS#The_State_of_AngularJS_1.2.x
+
+In past versions of AngularJS there was no protection against XSS.
+For example, in these old versions, it was possible to inject code that can be run from within {{ }}.
+In our todo application, since the user can control the value of todo.title, there is a threat that JS code would be run
+from {{todo.title}}.
+However, in the last versions of AngularJS (1.2.x), these issues were fixed, so that XSS attacks won't work.
+Since I use a new version of AngularJS (1.2.10), XSS attacks as described in the URL above don't work.
+I tried many ways to inject HTML or JS code by controlling the value of todo.title. I added todo items whose title is
+a valid HTML of JS code, but AngularJS escaped these strings: it just showed them as regular strings and didn't insert
+them as part of the HTML code.
+
+
+

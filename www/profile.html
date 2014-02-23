@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Gal Vardi - profile </title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="profile.js"></script>
+	</head>
+	<body>
+		<img id="profile_pic" src="me.jpg" alt="me"/>
+		<article>
+			<section id="form_part">
+				<form id="login_form">
+					Username: <input type="text" name="uname" id="uname"/>
+					Password: <input type="text" name="password" value="Some name" id="password"/>
+					<input type="submit" value="Send"/>
+				</form>
+			</section>
+			<section id="main_content">
+				<h1>
+					<span id="first_name"> Gal, </span>
+					Vardi
+					<br/>
+					(300002417)
+				</h1>	
+				<p> Welcome to my personal website... </p>
+				<p> I am 27 years old </p>
+				<p> I am a M.Sc student </p>
+				<p> My main field of interest is designing simple html pages </p>
+				<p> Here are my favorite websites: </p>
+				<table>
+					<tr>
+						<th>link</th>
+						<th>Reason why I like it</th>
+					</tr>
+					<tr>
+						<td> <a href="http://www.htmldog.com"> htmldog </a> </td>
+						<td> This website contains html and css tutorials</td>
+					</tr>
+					<tr>
+						<td> <a href="http://www.ynet.co.il"> ynet </a> </td>
+						<td> This website contains news </td>
+					</tr>
+					<tr>
+						<td> <a href="http://www.google.com"> google </a> </td>
+						<td> This website contains everything </td>
+					</tr>
+				</table>
+			</section>
+			<section class="bottom_part" id="funny_part">
+				<p> Something amusing: </p>
+				<img src="http://imgs.xkcd.com/comics/standards.png" alt="xkcd"/>
+			</section>
+			<section class="bottom_part" id="calculator_part">
+				<h1> Welcome to the Calculator!!! </h1>
+				<div id="calculator">
+					<p id="screen"> 0 </p>
+					<form id="calc_form">
+						<input type="button" value="+" id="add_button" class="left_button"/>
+						<input type="button" value="*" id="mul_button" class="right_button"/>
+						<input type="button" value="settings" id="settings_button" class="left_button"/> 
+						<input type="button" value="clear" id="clear_button" class="right_button"/> <br/>
+						<input type="text" name="input_box" id="input_box"/>
+					</form>
+				</div>
+			</section>
+		</article>
+	</body>
+</html>

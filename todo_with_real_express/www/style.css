@@ -1,0 +1,133 @@
+body {
+	background-color: #4aacc0;
+	margin: 0; 
+	color: white;
+	font-size: 2em;
+	font-family: "calibri", "arial";
+}
+
+#profile_pic{
+	position: absolute;
+	top: 2.27em;
+	right: 0.1em;
+	transform: rotate(10deg) scale(0.8); 
+	-webkit-transform: rotate(10deg) scale(0.8); /* for chrome, safari and others*/
+	-ms-transform: rotate(10deg) scale(0.8); /* for IE9 */
+	-moz-transform: : rotate(10deg) scale(0.8); /* for old firefox */
+	-o-transform: : rotate(10deg) scale(0.8); /* for old opera */
+	/* see HTTP://caniuse.com/transforms2d for compatibility details */
+}
+
+#form_part{
+	border-style: solid;
+	border-width: 8px;
+	border-bottom-width: 1px;
+	padding: 25px 50px 20px 20px; /* top, right, buttom, left */
+	border-color: #eaeaea #eaeaea black #eaeaea;
+	font-size: 0.8em;
+}
+
+#login_form{
+	text-align: right;
+	color: black;
+}
+
+input{
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	height: 45px;
+	font-size: 1em;
+	font-family: "calibri", "arial";
+}
+
+input[type=text]{
+	width: 203px;
+	text-align: left;
+	padding-left: 15px;
+	margin-right: 10px;
+}
+
+input[type=submit]{
+	background-color:#4f81bc;
+	border-radius: 10px;
+	border-width: 6px;
+	color: white;
+	width: 150px;
+	border-color: #eaeaea;
+	box-shadow: 2px 4px #4F767E; /* horizontal vertical color */
+	margin-left: 10px;
+}
+
+#main_content{
+	border-style: solid;
+	border-width: 1px;
+	border-left-width: 8px;
+	border-right-width: 8px;
+	padding: 1px 5px 200px 50px; /* top, right, buttom, left */
+	border-color: black #eaeaea black #eaeaea;
+}
+
+#main_content h1{
+	font-size: 2em;
+	text-decoration: underline;
+	line-height: 150%;
+}
+
+#first_name{
+	font-weight: normal;
+}
+
+.bottom_part{
+	border-style: solid;
+	border-width: 8px;
+	border-top-width: 1px;
+	border-color: black #eaeaea #eaeaea #eaeaea;
+}
+
+#funny_part{
+	padding: 40px 5px 100px 50px; /* top, right, buttom, left */
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#calculator_part{
+	padding: 40px 5px 275px 50px; /* top, right, buttom, left */
+	display: none;
+}
+
+#calculator{
+	border-style: solid;
+	border-color: black;
+	margin-left: 300px;
+	width: 281px;
+}
+
+input[type=button]{
+	margin: 3.5px;
+	width: 130px;
+}
+
+.right_button{
+	float: right;
+}
+
+#input_box{
+	width: 263px;
+}
+
+#screen{
+	border-style: solid;
+	border-color: black;
+	width: 270px;
+	padding-left: 5px;
+	font-size: 1.3em;
+	margin: 0;
+}
+
+table, th, td{
+	border: 1px solid black;
+	font-size: 1em;
+}
+
+

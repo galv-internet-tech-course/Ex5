@@ -1,0 +1,26 @@
+what was hard?
+--------------
+AngularJS is a rich and complicated framework, so it takes time to understand how it works.
+
+
+what was easy?
+--------------
+The two-way data binding of AngularJS makes the life of the developer much easier.
+
+
+general comments about the course
+---------------------------------
+I took this course because I think that web technologies have great importance in the software industry,
+and I felt that I must learn this area.
+I have experience in other fields of software development, but for some reason I didn't deal with web technologies
+until today, and I saw this course as a chance to learn the basic topics in this area.
+Now I feel that I understand the basic concepts of web development, and it is much easier for me to learn other topics
+that were not covered in the course. I am sure that in the future I will come across these technologies many times
+in my work.
+
+Most of the work in this course was at the end of the semester. I think that it would be smarter to start with the
+main exercises (ex3, ex4 and ex5) earlier in the semester.
+In addition, there was a strong focus on NodeJS. Perhaps if the node exercises were shorter, it would be possible to
+learn other subjects that weren't covered in the course.
+
+Overall, I think that the course was great.

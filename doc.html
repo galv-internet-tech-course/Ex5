@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>tests documentation</title>
+</head>
+<body>
+    <h1>miniExpress Tests Documentation</h1>
+    <h2>automatic tests</h2>
+    <ul>
+        <li>test set-cookie
+            <ul>
+                <li>test every possible cookie attribute</li>
+                <li>test JSON as the value of the cookie</li>
+                <li>check that these cookies are sent in the response in different headers</li>
+            </ul>
+        </li>
+
+        <li>test cookie parsing by the cookieParser middleware
+            <ul>
+                <li>send a request with both string cookies and JSON cookies</li>
+                <li>verify that the cookies are parsed correctly</li>
+            </ul>
+        </li>
+
+        <li>test illegal cookies
+            <ul>
+                <li>send a request with a "cookie:" header in invalid format </li>
+                <li>verify that the response has status 500</li>
+            </ul>
+        </li>
+
+        <li>test two servers that listen to different ports concurrently with the same app</li>
+
+        <li>pass a path to a file as the resource parameter for .use()
+            <ul>
+                <li>verify that the server serves this file correctly</li>
+            </ul>
+        </li>
+
+        <li>start the server in two ways
+            <ul>
+                <li>way 1: using app.listen(port)</li>
+                <li>way 2: using http.createServer(app).listen(port)</li>
+            </ul>
+        </li>
+
+        <li>verify that handlers are called according to the registration order, regardless of their method</li>
+
+        <li>test the urlencoded middleware
+            <ul>
+                <li>check that an url encoded body is parsed correctly by the middleware</li>
+                <li>use both regular key=value format and obj[key]=val. verify the handler parses them correctly</li>
+                <li>use percent encoded characters, and '+' character and verify they are parsed correctly</li>
+            </ul>
+        </li>
+
+        <li>test the JSON middleware
+            <ul>
+                <li>check that a JSON encoded body is parsed correctly by the middleware</li>
+            </ul>
+        </li>
+
+        <li>test the bodyParser middleware
+            <ul>
+                <li>check that a both a JSON encoded body and a url encoded body are parsed correctly</li>
+            </ul>
+        </li>
+
+        <li>test request.is(). for Content-Type of "application/x-www-form-urlencoded" verify that:
+            <ul>
+                <li>req.is("application/*")</li>
+                <li>req.is("x-www-form-urlencoded")</li>
+                <li>req.is("application/x-www-form-urlencoded")</li>
+                <li>!req.is("not")</li>
+            </ul>
+        </li>
+
+        <li>test request.param() for body, query and params</li>
+
+        <li>test request.host</li>
+
+        <li>test url with query string parsing
+            <ul>
+                <li>use both regular key=value format and obj[key]=val. verify the handler parses them correctly</li>
+                <li>use also percent encoded characters, and '+' character</li>
+            </ul>
+        </li>
+
+        <li>test bad body format
+            <ul>
+                <li>test both bad url encoded body and bad JSON encoded body</li>
+            </ul>
+        </li>
+
+        <li>test res.get()</li>
+
+        <li>test parameters parsing:
+            <ul>
+                <li>resource: /a/b/c, url: /a/b/c</li>
+                <li>resource:/res1/:param/res2 , url: /res1/par/res2</li>
+                <li>resource: /:param1/:param2/:param3 , url: /a/b/c</li>
+                <li>resource: :param1/:param2/:param3, url: /a/b/c</li>
+                <li>resource: /:param1/:param2/:param3, url: a/b/c</li>
+                <li>resource: :param1/:param2/:param3, url: a/b/c</li>
+                <li>resource: /:param1/:param2/:param3/, url: /a/b/c</li>
+                <li>resource: /:param1/:param2/:param3, url: /a/b/c/</li>
+                <li>resource: /:param1/:param2/:param3/, url: /a/b/c/</li>
+                <li>resource: /x/:y, url: /x/y</li>
+                <li>resource: /x/:y, url: /x/y/z</li>
+                <li>resource: /x/:y/z/:w, url: /x/y/z/w/a/b/c</li>
+                <li>resource: /:x/y, url: /x/y</li>
+                <li>resource: :x/y, url: /x/y</li>
+                <li>resource: x/:y, url: /x/y</li>
+                <li>resource: /x/:y/, url: /x/y</li>
+                <li>resource: :x/y/, url: /x/y</li>
+            </ul>
+        </li>
+
+        <li>test app.listen(port, callback) - verify that the callback is called</li>
+
+        <li>test the methods: app.get(), app.post(), app.delete(), app.put()</li>
+
+        <li>test app.route</li>
+
+        <li>test .use without the resource parameters - it means that the resource is "/"</li>
+
+        <li>check that if no handler is sending then the static handler is called</li>
+
+        <li>check that in case none of the callbacks apply to the specific HTTP request 404 is returned</li>
+
+        <li>test http response implicit header
+            <ul>
+                <li>test the http response .setHeader(), .getHeader(), .removeHeader() methods</li>
+                <li>test the http response .write() method that sends the implicitly defined headers
+                    with the response</li>
+            </ul>
+        </li>
+
+        <li>test http.setTimeout()</li>
+
+        <li>check every supported Content-Type
+            <ul>
+                <li>supported types: js, txt, html, css, gif, jpg</li>
+                <li>
+                    in each test we request the file and then verify that the reply is 200 OK and contains the correct
+                    headers and values
+                </li>
+                <li>each field in the response is verified</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+
+        <li>HTTP 1.0 tests
+            <ul>
+                <li>check http 1.0 without Connection:keep-alive
+                    <ul>
+                        <li>the response will be of version 1.0</li>
+                        <li>the connection will be closed immediately </li>
+                        <li>each field in the response is verified, and also the response body</li>
+                    </ul>
+                </li>
+                <li>check http 1.0 with Connection: keep-alive
+                    <ul>
+                        <li>the response will be of version 1.0</li>
+                        <li>the connection won't be closed immediately </li>
+                        <li>each field in the response is verified, and also the response body</li>
+                    </ul>
+                </li>
+                <li>check http 1.0 with bad file path
+                    <ul>
+                        <li>the response will be of version 1.0, status 404</li>
+                        <li>each field in the response is verified, and also the response body</li>
+                        <li>the response body is 'Bad file path'</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        
+        <li>request file that doesn't exist
+            <ul>
+                <li>the response has status 404</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'Bad file path'</li>
+                <li>tested using the http module</li>
+                <li>the connection will not be closed</li>
+            </ul>
+        </li>
+
+        <li>file in a directory without an handler
+            <ul>
+                <li>the response has status 404</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'Bad file path'</li>
+                <li>tested using the http module</li>
+                <li>the connection will not be closed</li>
+            </ul>
+        </li>
+        
+        <li>the url is a directory
+            <ul>
+                <li>the response has status 404</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'Bad file path'</li>
+                <li>tested using the http module</li>
+                <li>the connection will not be closed</li>
+            </ul>
+        </li>
+
+        <li>the url is a directory which is the root resource
+            <ul>
+                <li>the response has status 404</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'Bad file path'</li>
+                <li>tested using the http module</li>
+                <li>the connection will not be closed</li>
+            </ul>
+        </li>
+        
+        <li>bad Content-Length: not a number
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'invalid Content-Length'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+        
+        <li>bad Content-Length: -1, not a number
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'invalid Content-Length'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+        
+        <li>bad method: POST<
+            <ul>
+                <li>An http POST request</li>
+                <li>the response has status 405</li>
+                <li>the response contains an "Allow: GET" header</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'only GET method is supported'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+        
+        <li>non HTTP packet, but with an empty line
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'illegal protocol. must be HTTP/1.0 or HTTP/1.1'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>packet without an empty line
+            <ul>
+                <li>the request is not parsed by the server, because the server thinks that it is not completed</li>
+                <li>the connection will be closed by the server on timeout</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>bad protocol: HTTP/1.2
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'illegal protocol. must be HTTP/1.0 or HTTP/1.1'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>bad header: line without ':'
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'illegal header'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+
+        <li>bad file type - pdf
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'File type not supported by this server'</li>
+                <li>the connection will not be closed</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+        
+        <li>request file without read permissions
+            <ul>
+                <li>the response has status 500</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'An internal FS error in the server'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+
+        <li>request URL with query
+            <ul>
+                <li>the URL is /www/features.txt?name=gal&age=old"</li>
+                <li>the query is ignored</li>
+                <li>the response is the regular 200 OK response with the requested file</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+        
+        <li>request with body
+            <ul>
+                <li>the body will be ignored</li>
+                <li>the response is the regular 200 OK response with the requested file</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+
+        <li>verify that the client can't use URLs with '..' since this is a security thread
+            <ul>
+                <li>the response has status 404</li>
+                <li>each field in the response is verified, and also the response body</li>
+                <li>the response body is 'bad URL: contains ..'</li>
+                <li>the connection will be closed by the server</li>
+                <li>tested using the http module</li>
+            </ul>
+        </li>
+        
+        <li>header names in requests are not case-sensitive
+            <ul>
+                <li>requests with header names in mixed-case are handled correctly</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>there might be spaces and tabs between the fields in the first line
+            <ul>
+                <li>requests with spaces and tabs in the first line are handled correctly</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>header lines might end with \n instead of \r\n
+            <ul>
+                <li>each line might end with \n or \r\n</li>
+                <li>the headers section might end with \n\r\n or \n\n</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+        
+        <li>A few requests that arrive in one 'data' handler
+            <ul>
+                <li>all of these requests are handled one after the other</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+
+        <li>A request that arrives to multiple 'data' handlers (chunks)
+            <ul>
+                <li>the request is handled after the whole request arrived</li>
+                <li>tested using the net module</li>
+            </ul>
+        </li>
+        
+        <li>
+            Two request that arrive on the same socket in two chunks - the first contains one request and the
+            second contains the second request
+            <ul>
+                <li>
+                    the first request is handled immediately after it arrives, and also the second request is handled
+                    immediately after it arrives (and after the first request was processed).
+                </li>
+                <li>
+                    I tested a few time intervals between the first and the seconds request in order to test situations
+                    in which the second request arrives before, during and after the processing of the first one
+                </li>
+            </ul>
+        </li>
+
+        <li>test a few handlers registered in the same time (more than one .use() calls)
+            <ul>
+                <li>the suitable handlers will be called by the order of the .use() calls</li>
+                <li>if next() is not called in one handler, the next handlers won't be run</li>
+            </ul>
+        </li>
+
+        <li>test app.close()
+            <ul>
+                <li>close the server and then resart it</li>
+                <li>make sure it was restarted successfully</li>
+            </ul>
+        </li>
+
+        <li>use an handler that throws Error and verify the server doesn't crush
+            <ul>
+                <li>the handler is registered using .use()</li>
+                <li>when the suitable url request is received the bad handler is called and throws Error</li>
+                <li>the server doesn't crush and continues to work well in the next tests</li>
+            </ul>
+        </li>
+
+        <li>destroy the socket immediately after the request is sent
+            <ul>
+                <li>the server will handle the error correctly: it won't crush and won't leak fds</li>
+            </ul>
+        </li>
+
+        <li>end the socket immediately after the request is sent
+            <ul>
+                <li>the server will handle the error correctly: it won't crush and won't leak fds</li>
+            </ul>
+        </li>
+
+        <li>use rootResource with and without / in the beginning
+            <ul>
+                <li>it works both ways</li>
+            </ul>
+        </li>
+
+        <li>handle different files in the same time</li>
+
+        <li>load (stress) tests - 150 connections from each of these categories
+            <ul>
+                <li>
+                    the client uses keep-alive and doesn't close the sockets - server should close the connection after
+                    timeout of 2 seconds
+                </li>
+                <li>
+                    the client uses keep-alive but closes the socket after the response is done.
+                </li>
+                <li>
+                    the client uses "Connection: close"  - the server should close the connection immediately
+                </li>
+                <li>for each of these 800 responses we verify every field, and also the response body</li>
+            </ul>
+        </li>
+
+        <li>request an empty file - the response is 200 OK without a body</li>
+
+        <li>test memory and fd leaks
+            <ul>
+                run 400,000 requests and after it finishes check that the memory used didn't increase and that there 
+                are no open file descriptors (with handle.exe)
+            </ul>
+            <ul>
+                It was also tested after stress with ab and after run of the tester
+            </ul>
+        </li>
+
+    </ul>
+    
+    <h2>other tests</h2>
+    <ul>
+        <li>verify that the list example works well with the server on chrome, firefox and IE</li>
+        <li>check the cookies handling with chrome
+            <ul>
+                <li>check that the set-cookie header from the server is parsed correctly by chrome</li>
+                <li>check that the server parses the cookies from the browser correctly</li>
+            </ul>
+        </li>
+        <li>test with ab (apache bench) - 15,000 connections concurrently</li>
+        <li>check profile.html with chrome, firefox and IE</li>
+        <li>manual stress test with multiple clients in different agents (localhost and another PC) at the same time</li>
+        <li>test with cURL</li>
+        <li>test every Content-Type with a browser</li>
+    </ul>
+</body>
+</html>
